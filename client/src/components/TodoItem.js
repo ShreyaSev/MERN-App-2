@@ -26,8 +26,9 @@ const TodoItem = ({ todo, handleDelete }) => {
 
     return (
         toggle ? (
-            <div onClick = {()=> {setToggle(false)}} onDoubleClick={() => handleDelete(todo._id)}>
-                <li key={todo._id}>{task}</li>
+            <div onDoubleClick = {()=> {setToggle(false)}}>
+                <li key={todo._id} >{task}</li> 
+                <button onClick={() => handleDelete(todo._id)}>Delete</button>
             </div>
         ) : (
             <input
