@@ -1,16 +1,22 @@
 import TodoItem from "./TodoItem";
 import axios from "axios";
 
-const deleteTodo = async (id) => {
-    try {
-      const res = await axios.delete(`http://localhost:5000/todos/${id}`);
-      console.log(res);
-    } catch (error) {
-      console.error(error);
-    }
-  }; 
 
-const TodoList  = ({todos}) =>{
+
+const TodoList  = ({todos, setTodos}) =>{
+
+    const deleteTodo = async (id) => {
+        try {
+          const res = await axios.delete(`http://localhost:5000/todos/${id}`);
+          console.log(res);
+          axios.get('http://localhost:5000/todos') //request response from server
+          .then(response => setTodos(response.data)) //setTodos is used to update the state of todos ; then function is used as a "promise-chain" - once response returns successfully, executes the function inside
+          .catch(error => console.error(error)); //error handling
+        } catch (error) {
+          console.error(error);
+        }
+      }; 
+
     return(
         <div>
             <ul>

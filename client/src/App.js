@@ -10,7 +10,7 @@ const App = () => {
     axios.get('http://localhost:5000/todos') //request response from server
       .then(response => setTodos(response.data)) //setTodos is used to update the state of todos ; then function is used as a "promise-chain" - once response returns successfully, executes the function inside
       .catch(error => console.error(error)); //error handling
-  }, [todos]);
+  }, []);
   const addTodo = (newTodo) => {
   setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
@@ -19,7 +19,7 @@ const App = () => {
     <div>
       <h1>MERN Stack Todo App</h1>
       <TodoForm onAdd = {addTodo} />
-      <TodoList todos = {todos} />
+      <TodoList todos = {todos} setTodos = {setTodos} />
     </div>
   );
 };
