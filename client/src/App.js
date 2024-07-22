@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
+import './styles/App.css';
 const App = () => {
   const [todos, setTodos] = useState([]); //todos is an array and can be modified using setTodos
   useEffect(() => { //called when the component is rendered; which component? App component
@@ -17,8 +19,11 @@ const App = () => {
       <h1>MERN Stack Todo App</h1>
       <TodoForm onAdd = {addTodo} />
       <ul>
-        {todos.map(todo => (//map - for each todo in todos, add li element
+        {/* {todos.map(todo => (//map - for each todo in todos, add li element
           <li key={todo._id}>{todo.task}</li>
+        ))} */}
+        {todos.map(todo=>(
+          <TodoItem todo = {todo} />
         ))}
       </ul>
     </div>
