@@ -19,7 +19,7 @@ const TodoList  = ({todos, setTodos}) =>{
 
     return(
         <div>
-            <ul>
+            <ul className="list-group todos mx-auto text-light delete">
                 {todos.map(todo=>(
                 <TodoItem key = {todo._id} todo = {todo} handleDelete = {deleteTodo} />
                 ))}

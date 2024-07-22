@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import './styles/App.css';
+// import './styles/App.css';
+import './styles/PurpleStyle.css';
 const App = () => {
   const [todos, setTodos] = useState([]); //todos is an array and can be modified using setTodos
   useEffect(() => { //called when the component is rendered; which component? App component
@@ -16,9 +17,11 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>MERN Stack Todo App</h1>
-      <TodoForm onAdd = {addTodo} />
+    <div className="container">
+      <div className="text-center text-light my-4">
+        <h1 className="mb-4">Todo List</h1>
+        <TodoForm onAdd = {addTodo} />
+      </div>
       <TodoList todos = {todos} setTodos = {setTodos} />
     </div>
   );

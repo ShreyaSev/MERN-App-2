@@ -30,8 +30,13 @@ const TodoItem = ({ todo, handleDelete }) => {
     return (
         toggle ? (
             <div onDoubleClick = {()=>{setToggle(false)}}>
-                <li key={todo._id} >{task}</li> 
-                <button onClick={() => handleDelete(todo._id)}>Delete</button>
+                <li className='list-group-item d-flex justify-content-between align-items-center' key={todo._id} >
+                    <span>{task}</span>
+                {/* <button onClick={() => handleDelete(todo._id)}>Delete</button>
+                    </li>  */}
+                <i className='far fa-trash-alt delete' onClick={() => handleDelete(todo._id)}></i>
+                </li>
+                {/* <Button variant="danger" onClick={() => handleDelete(todo._id)}>Delete</Button> */}
             </div>
         ) : (
             <input
