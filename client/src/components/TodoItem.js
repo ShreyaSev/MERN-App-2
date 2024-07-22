@@ -1,7 +1,6 @@
-const TodoItem = ({todo}) =>{
-    console.log(todo._id);
+const TodoItem = ({todo, handleDelete}) =>{
     return(
-        <div>
+        <div onDoubleClick={()=> handleDelete(todo._id)}>
             <li key={todo._id}>{todo.task}</li>
         </div>
     )

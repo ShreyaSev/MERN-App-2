@@ -11,6 +11,7 @@ const TodoForm = ({ onAdd }) => {
       console.error(error);
     }
   };
+
   //input form, text input, on change, setTask to the value of the input
   //on add, call addtodo which resets the input form to empty string
   return (
