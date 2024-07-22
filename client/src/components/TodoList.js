@@ -3,7 +3,8 @@ import axios from "axios";
 
 const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/todos/${id}`);
+      const res = await axios.delete(`http://localhost:5000/todos/${id}`);
+      console.log(res);
     } catch (error) {
       console.error(error);
     }
