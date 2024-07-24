@@ -32,15 +32,11 @@ const TodoForm = ({ onAdd }) => {
       <form className="add text-center my-4">
       <label className="text-light">Add a new todo...</label>
       <br/>
-      <input className = "m-auto" name = "add" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
-      {/* <button onClick={addTodo}>Add Todo</button> */}
+      <input className = "m-auto px-2" name = "add" type="text" value={task} onChange={(e) => setTask(e.target.value)}/> 
+      <i className="fas fa-microphone microphone m-2" onClick={listen}></i>
       <div className="text-center">
           <button type="submit" onClick={addTodo} className="btn btn-light">Add Todo</button>
         </div>
-      <div>
-        <button type ="button"  onClick={listen} className="btn btn-light">Start Listening</button>
-          
-      </div>
       </form>
     </div>
   );
