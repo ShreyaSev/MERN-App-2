@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import useVoice from './useVoice';
+import { set } from 'mongoose';
 const TodoForm = ({ onAdd }) => {
   const [task, setTask] = useState('');
   const addTodo = async () => {//async function that handles adding a todo
@@ -12,18 +14,33 @@ const TodoForm = ({ onAdd }) => {
     }
   };
 
+  const {
+    text,
+    isListening,
+    listen,
+    voiceSupported,
+  } = useVoice();
+
+  useEffect(() => {
+    setTask(text);
+  }, [text]);
+
   //input form, text input, on change, setTask to the value of the input
   //on add, call addtodo which resets the input form to empty string
   return (
     <div className='text-center'>
       <form className="add text-center my-4">
-      <label class="text-light">Add a new todo...</label>
+      <label className="text-light">Add a new todo...</label>
       <br/>
-      <input className = "form-contrl m-auto" name = "add" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
+      <input className = "m-auto" name = "add" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
       {/* <button onClick={addTodo}>Add Todo</button> */}
       <div className="text-center">
           <button type="submit" onClick={addTodo} className="btn btn-light">Add Todo</button>
         </div>
+      <div>
+        <button type ="button"  onClick={listen} className="btn btn-light">Start Listening</button>
+          
+      </div>
       </form>
     </div>
   );
