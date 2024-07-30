@@ -30,27 +30,30 @@ const TodoItem = ({ todo, handleDelete }) => {
     return (
         toggle ? (
             <div onDoubleClick = {()=>{setToggle(false)}}>
-                <li className='list-group-item d-flex justify-content-between align-items-center' key={todo._id} >
+                <li className='list-group-item d-flex justify-content-between align-items-center todoitem m-1' key={todo._id} >
                     <span>{task}</span>
                 {/* <button onClick={() => handleDelete(todo._id)}>Delete</button>
                     </li>  */}
-                <i className='far fa-trash-alt delete' onClick={() => handleDelete(todo._id)}></i>
+                <i className='far fa-trash-alt delete m-1' onClick={() => handleDelete(todo._id)}></i>
                 </li>
                 {/* <Button variant="danger" onClick={() => handleDelete(todo._id)}>Delete</Button> */}
             </div>
         ) : (
-            <input
-                type="text"
-                value={task}
-                onChange={(event) => setTask(event.target.value)}
-                onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
-                        setToggle(true);
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                }}
-            />
+                <input
+                    type="text"
+                    value={task}
+                    className='px-2 todoitem m-1'
+                    onChange={(event) => setTask(event.target.value)}
+                    onBlur={() => setToggle(true)}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            setToggle(true);
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                    }}
+                />
+            
         )
     );
 };
