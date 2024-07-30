@@ -1,7 +1,7 @@
-# Voice Enabled Todo App using MERN Stack
-This is a simple MERN Stack application for a Todo List App. 
-**Backend**: Express, Node, MongoDB
-**Frontend**: ReactJS, CSS
+# Voice Enabled Todo App using MERN Stack 
+This is a simple MERN Stack application for a Todo List App. \
+**Backend**: Express, Node, MongoDB \
+**Frontend**: ReactJS, CSS 
 
 ## Features:
 - Add tasks to the list through text or voice by clicking on the mic icon. Voice input is handled using the Webkit Speech Recognition API.
