@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef} from 'react';
+import { updateTask } from '../services/api';
 import axios from 'axios';
 
 const TodoItem = ({ todo, handleDelete }) => {
@@ -8,9 +9,10 @@ const TodoItem = ({ todo, handleDelete }) => {
     const this_todo = useRef(todo);
     // const toggle = useRef(true);
 
-    const updateTask = async (todo, task) => {
+    const handleUpdateTask = async (todo, task) => {
         try{
-            const response = await axios.put(`http://localhost:5000/todos/${todo._id}`, {task});
+            // const response = await axios.put(`http://localhost:5000/todos/${todo._id}`, {task});
+            const response = await updateTask(todo, task);
             console.log(response);
         } catch (error){
             console.error(error);
@@ -20,7 +22,7 @@ const TodoItem = ({ todo, handleDelete }) => {
         //call the database update function
 
         if(!initialRender.current && toggle){
-            updateTask(this_todo.current, task);
+            handleUpdateTask(this_todo.current, task);
         }
         else{
             initialRender.current = false;

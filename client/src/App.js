@@ -4,15 +4,22 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 // import './styles/App.css';
 import './styles/PurpleStyle.css';
+import {getAllTodos} from "./services/api";
 const App = () => {
   const [todos, setTodos] = useState([]); //todos is an array and can be modified using setTodos
-  useEffect(() => { //called when the component is rendered; which component? App component
-    // Fetch data from the Express server
-    axios.get('http://localhost:5000/todos') //request response from server
-      .then(response => setTodos(response.data)) //setTodos is used to update the state of todos ; then function is used as a "promise-chain" - once response returns successfully, executes the function inside
-      .catch(error => console.error(error)); //error handling
+  useEffect(() => {
+    // Function to fetch data from the server
+    const fetchData = async () => {
+      try {
+        const data = await getAllTodos();
+        setTodos(data); // Update the state with the fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error); // Error handling
+      }
+    };
+    fetchData(); // Call the fetchData function when the component mounts
   }, []);
-  const addTodo = (newTodo) => {
+  const handleOnAdd = (newTodo) => {
   setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
@@ -20,7 +27,7 @@ const App = () => {
     <div className="container">
       <div className="text-center text-light my-4">
         <h1 className="mb-4">Todo List</h1>
-        <TodoForm onAdd = {addTodo} />
+        <TodoForm onAdd = {handleOnAdd} />
       </div>
       <TodoList todos = {todos} setTodos = {setTodos} />
     </div>

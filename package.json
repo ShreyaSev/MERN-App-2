@@ -1,10 +1,11 @@
 {
   "name": "first-mern-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a simple MERN Stack application for a Todo List App. \\ **Backend**: Express, Node, MongoDB \\ **Frontend**: ReactJS, CSS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +13,8 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.5.1",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
     "react-bootstrap": "^2.10.4"
   }
 }
